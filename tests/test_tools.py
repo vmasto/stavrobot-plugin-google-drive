@@ -255,9 +255,13 @@ def test_upload_text_converts_markdown_to_a_doc(fake):
 
 def test_upload_file_and_replace(fake, tmp_path):
     upload_routes(fake, "POST", "files")
-    source = tmp_path / "photo.jpg"
+    # The plugin-runner puts input files in OUTPUT_DIR, so the tool must remove them.
+    gd.OUTPUT_DIR.mkdir()
+    source = gd.OUTPUT_DIR / "photo.jpg"
     source.write_bytes(b"jpg")
     tool("upload")({"file": str(source)})
+    assert not source.exists()
+    source.write_bytes(b"jpg")
     start = last(fake, "POST", "files")
     assert start["json"] == {"name": "photo.jpg", "parents": ["root"]}
     assert start["headers"]["X-Upload-Content-Type"] == "image/jpeg"

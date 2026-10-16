@@ -18,12 +18,9 @@ def main(params: dict) -> dict:
     name = gd.text_param(params, "name", required=False)
     replace_id = gd.text_param(params, "replace_file_id", required=False)
     if source:
-        source = Path(source)
-        if not source.is_file():
-            raise gd.ToolError("file was not found.")
-        data = source.read_bytes()
-        mime = gd.guess_mime(name or source.name)
-        name = name or source.name
+        source_name, data = gd.read_input(source)
+        name = name or source_name
+        mime = gd.guess_mime(name)
     elif isinstance(text, str):
         if not name and not replace_id:
             raise gd.ToolError("name is required with text.")

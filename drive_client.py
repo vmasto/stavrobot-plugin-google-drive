@@ -400,6 +400,19 @@ def upload(method: str, path: str, metadata: dict, data: bytes, mime: str, param
     return response.json()
 
 
+def read_input(value) -> tuple[str, bytes]:
+    """Read a file parameter and return its name and bytes."""
+    path = Path(value)
+    if not path.is_file():
+        raise ToolError("file was not found.")
+    data = path.read_bytes()
+    # The plugin-runner puts input files in OUTPUT_DIR and sends back whatever is
+    # left there, so remove the input to keep it from coming back as an output.
+    if path.resolve().parent == OUTPUT_DIR.resolve():
+        path.unlink()
+    return path.name, data
+
+
 def guess_mime(name: str) -> str:
     return mimetypes.guess_type(name)[0] or "application/octet-stream"
 
