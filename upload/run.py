@@ -49,6 +49,8 @@ def main(params: dict) -> dict:
             if not target:
                 raise gd.ToolError(f"Drive can't convert {mime} files to a Google file.")
             metadata["mimeType"] = gd.GOOGLE + target
+            # Drive keeps the name as given, so notes.md would become a Doc called notes.md.
+            metadata["name"] = Path(name).stem or name
         item = gd.upload("POST", "files", metadata, data, mime, fields)
     return gd.entry(item)
 

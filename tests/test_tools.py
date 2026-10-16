@@ -247,7 +247,7 @@ def test_upload_text_converts_markdown_to_a_doc(fake):
     out = tool("upload")({"text": "# Hi", "name": "notes.md", "folder_id": "d1", "convert": True})
     assert out["id"] == "new" and out["type"] == "document" and out["link"] == "https://docs.google.com/new"
     start = last(fake, "POST", "files")
-    assert start["json"] == {"name": "notes.md", "parents": ["d1"], "mimeType": DOC}
+    assert start["json"] == {"name": "notes", "parents": ["d1"], "mimeType": DOC}
     assert start["headers"]["X-Upload-Content-Type"] == "text/markdown"
     assert start["params"]["uploadType"] == "resumable"
     assert last(fake, "PUT", "session")["data"] == b"# Hi"
