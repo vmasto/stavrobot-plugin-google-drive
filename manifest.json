@@ -1,0 +1,20 @@
+{
+  "name": "google-drive",
+  "description": "Search, read, upload, organize and share files in the user's Google Drive.",
+  "summary": "Search, read, upload, organize and share Google Drive files",
+  "instructions": "WARNING: the share tool is on by default, so I can share your files with anyone, or make them public, as soon as you connect. A file, email or web page I read can carry a prompt injection, text written to get me to share your files with someone.\n\nTurn share off before connecting. You have to do this yourself, from my plugin settings page:\n1. Open /settings/plugins and pick google-drive.\n2. Under Permissions, set \"Agents can use\" to \"Selected tools\".\n3. Click \"Select all\", untick share, then click \"Save permissions\".\nYou can still share files from Drive yourself. I won't call auth_url until you confirm share is off.\n\nSetup:\n1. In https://console.cloud.google.com create a project and enable the Google Drive API. A project you already use for Gmail or Calendar works too.\n2. Under Google Auth Platform, set up the consent screen as External, then on Audience click Publish app. Apps left in Testing get refresh tokens that expire after 7 days, so you'd have to reconnect weekly.\n3. Under Clients, create an OAuth client of type Desktop app, and put its client ID and secret in this plugin's settings as client_id and client_secret.\n4. Once share is off, ask me to connect Google Drive and I'll send you a link. Google warns the app is unverified, click Advanced and continue. After you allow access the browser shows an error page on 127.0.0.1, that's expected: copy the full address and send it back.",
+  "config": {
+    "client_id": {
+      "description": "OAuth client ID of a Desktop app client, from Google Auth Platform > Clients in the Google Cloud console.",
+      "required": true
+    },
+    "client_secret": {
+      "description": "The same client's secret.",
+      "required": true
+    },
+    "refresh_token": {
+      "description": "Set by the auth_complete tool, no need to fill it in.",
+      "required": false
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "download",
+  "description": "Download a file so you receive it as an attachment, up to 25 MB. Google Docs, Sheets, Slides and Drawings are exported to format: Docs to pdf, docx, odt, md, txt, html, rtf or epub; Sheets to xlsx, ods, pdf, csv or tsv; Slides to pdf, pptx, odp or txt; Drawings to png, pdf, jpg or svg.",
+  "entrypoint": "run.py",
+  "parameters": {
+    "file_id": {
+      "type": "string",
+      "description": "File id."
+    },
+    "format": {
+      "type": "string",
+      "description": "Export format for Google files. Default: pdf for Docs and Slides, xlsx for Sheets."
+    }
+  }
+}

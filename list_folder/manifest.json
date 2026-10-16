@@ -1,0 +1,19 @@
+{
+  "name": "list_folder",
+  "description": "List a folder's files and subfolders, folders first. Without folder_id, lists the top of My Drive.",
+  "entrypoint": "run.py",
+  "parameters": {
+    "folder_id": {
+      "type": "string",
+      "description": "Folder id. Default: the top of My Drive."
+    },
+    "max_results": {
+      "type": "integer",
+      "description": "1 to 100. Default 50."
+    },
+    "page_token": {
+      "type": "string",
+      "description": "next_page_token from the previous call, to get the next page."
+    }
+  }
+}

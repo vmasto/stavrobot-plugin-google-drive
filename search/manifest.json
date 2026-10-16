@@ -1,0 +1,35 @@
+{
+  "name": "search",
+  "description": "Find files by name or content, newest first unless text is given. With no filters, lists recently modified files. Skips the trash.",
+  "entrypoint": "run.py",
+  "parameters": {
+    "text": {
+      "type": "string",
+      "description": "Words to find in the file name or content."
+    },
+    "type": {
+      "type": "string",
+      "description": "Only this kind: folder, document, spreadsheet, presentation, pdf, image, video or audio."
+    },
+    "folder_id": {
+      "type": "string",
+      "description": "Only direct children of this folder."
+    },
+    "shared_with_me": {
+      "type": "boolean",
+      "description": "Only files others shared with the user. Default false."
+    },
+    "query": {
+      "type": "string",
+      "description": "Raw Drive query, combined with the other filters, e.g. modifiedTime > '2026-01-01' or 'anna@example.com' in owners."
+    },
+    "max_results": {
+      "type": "integer",
+      "description": "1 to 50. Default 20."
+    },
+    "page_token": {
+      "type": "string",
+      "description": "next_page_token from the previous call, to get the next page."
+    }
+  }
+}

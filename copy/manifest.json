@@ -1,0 +1,19 @@
+{
+  "name": "copy",
+  "description": "Copy a file. Drive can't copy folders.",
+  "entrypoint": "run.py",
+  "parameters": {
+    "file_id": {
+      "type": "string",
+      "description": "File id."
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the copy. Default: Copy of and the original name."
+    },
+    "folder_id": {
+      "type": "string",
+      "description": "Folder for the copy. Default: same folder as the original."
+    }
+  }
+}

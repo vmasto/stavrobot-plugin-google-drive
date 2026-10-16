@@ -1,0 +1,11 @@
+{
+  "name": "get_metadata",
+  "description": "Details of one file or folder: path, link, owners and who it's shared with.",
+  "entrypoint": "run.py",
+  "parameters": {
+    "file_id": {
+      "type": "string",
+      "description": "File or folder id, from list_folder or search."
+    }
+  }
+}

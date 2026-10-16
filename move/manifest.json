@@ -1,0 +1,19 @@
+{
+  "name": "move",
+  "description": "Move a file or folder to another folder, rename it, or both.",
+  "entrypoint": "run.py",
+  "parameters": {
+    "file_id": {
+      "type": "string",
+      "description": "File or folder id, from list_folder or search."
+    },
+    "folder_id": {
+      "type": "string",
+      "description": "Destination folder id. Use root for the top of My Drive."
+    },
+    "name": {
+      "type": "string",
+      "description": "New name."
+    }
+  }
+}

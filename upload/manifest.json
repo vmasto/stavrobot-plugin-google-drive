@@ -1,0 +1,31 @@
+{
+  "name": "upload",
+  "description": "Save a file to Drive. Pass either file (an attachment) or text. Up to 25 MB. Drive allows several files with the same name, so uploading never replaces a file: pass replace_file_id to update one instead. With convert, the file becomes a Google Doc, Sheet or Slides, e.g. text or Markdown to a Doc, CSV to a Sheet.",
+  "entrypoint": "run.py",
+  "parameters": {
+    "file": {
+      "type": "file",
+      "description": "The file to upload."
+    },
+    "text": {
+      "type": "string",
+      "description": "Text to save as the file's content, instead of file."
+    },
+    "name": {
+      "type": "string",
+      "description": "File name, e.g. notes.md. Required with text, defaults to the attachment's name."
+    },
+    "folder_id": {
+      "type": "string",
+      "description": "Folder to save into. Default: the top of My Drive."
+    },
+    "convert": {
+      "type": "boolean",
+      "description": "Convert to a Google Doc, Sheet or Slides. Default false."
+    },
+    "replace_file_id": {
+      "type": "string",
+      "description": "Upload as a new version of this file, keeping its id, link and sharing."
+    }
+  }
+}

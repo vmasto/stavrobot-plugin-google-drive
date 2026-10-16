@@ -1,0 +1,15 @@
+{
+  "name": "create_folder",
+  "description": "Create a folder.",
+  "entrypoint": "run.py",
+  "parameters": {
+    "name": {
+      "type": "string",
+      "description": "Folder name."
+    },
+    "parent_id": {
+      "type": "string",
+      "description": "Folder to create it in. Default: the top of My Drive."
+    }
+  }
+}

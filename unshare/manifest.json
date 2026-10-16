@@ -1,0 +1,19 @@
+{
+  "name": "unshare",
+  "description": "Stop sharing a file or folder with someone, or turn off its link sharing.",
+  "entrypoint": "run.py",
+  "parameters": {
+    "file_id": {
+      "type": "string",
+      "description": "File or folder id, from list_folder or search."
+    },
+    "email": {
+      "type": "string",
+      "description": "Email to remove."
+    },
+    "anyone": {
+      "type": "boolean",
+      "description": "Turn off sharing with anyone who has the link instead. Default false."
+    }
+  }
+}

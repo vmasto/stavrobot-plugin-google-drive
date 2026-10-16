@@ -1,0 +1,15 @@
+{
+  "name": "trash",
+  "description": "Move files or folders to the trash, or take them back out with restore. Drive empties the trash after 30 days. Confirm with the user first.",
+  "entrypoint": "run.py",
+  "parameters": {
+    "file_ids": {
+      "type": "string",
+      "description": "File or folder ids, as a list or comma-separated."
+    },
+    "restore": {
+      "type": "boolean",
+      "description": "Take the files out of the trash instead. Default false."
+    }
+  }
+}
