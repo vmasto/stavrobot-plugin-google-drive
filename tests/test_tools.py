@@ -115,7 +115,10 @@ def test_list_folder_lists_children_folders_first(fake):
     fake.routes[("GET", "files")] = Response(
         200,
         {
-            "files": [item("d1", "Work", gd.FOLDER), item("f1", "a.pdf", "application/pdf", size="2048")],
+            "files": [
+                item("d1", "Work", gd.FOLDER),
+                item("f1", "a.pdf", "application/pdf", size="2048", webViewLink="https://drive.google.com/f1"),
+            ],
             "nextPageToken": "p2",
         },
     )
@@ -125,6 +128,8 @@ def test_list_folder_lists_children_folders_first(fake):
         ("Work", "folder", None),
         ("a.pdf", "file", 2048),
     ]
+    assert out["files"][1]["link"] == "https://drive.google.com/f1"
+    assert "webViewLink" in last(fake, "GET", "files")["params"]["fields"]
     params = last(fake, "GET", "files")["params"]
     assert params["q"] == "'0Aroot' in parents and trashed = false" and params["orderBy"] == "folder,name_natural"
 

@@ -17,8 +17,8 @@ def main(params: dict) -> dict:
         "mimeType": gd.FOLDER,
         "parents": [gd.text_param(params, "parent_id", required=False) or "root"],
     }
-    item = gd.api("POST", "files", params={"fields": f"{gd.FILE_FIELDS},webViewLink"}, body=body)
-    return {**gd.entry(item), "link": item.get("webViewLink")}
+    item = gd.api("POST", "files", params={"fields": gd.FILE_FIELDS}, body=body)
+    return gd.entry(item)
 
 
 if __name__ == "__main__":

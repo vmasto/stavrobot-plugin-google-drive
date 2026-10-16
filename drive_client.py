@@ -32,9 +32,9 @@ MAX_TRANSFER_BYTES = 25 * 1024 * 1024
 # read returns text, so anything bigger than this is better downloaded.
 MAX_READ_BYTES = 5 * 1024 * 1024
 
-FILE_FIELDS = "id,name,mimeType,size,modifiedTime,parents,shortcutDetails,trashed"
+FILE_FIELDS = "id,name,mimeType,size,modifiedTime,parents,shortcutDetails,trashed,webViewLink"
 DETAIL_FIELDS = (
-    f"{FILE_FIELDS},webViewLink,createdTime,description,ownedByMe,owners(emailAddress),shared,driveId,"
+    f"{FILE_FIELDS},createdTime,description,ownedByMe,owners(emailAddress),shared,driveId,"
     "permissions(id,type,role,emailAddress,domain)"
 )
 
@@ -296,6 +296,7 @@ def entry(item: dict) -> dict:
         "mime_type": mime,
         "size": int(item["size"]) if item.get("size") is not None else None,
         "modified": item.get("modifiedTime"),
+        "link": item.get("webViewLink"),
     }
     if mime == SHORTCUT:
         out["shortcut_to"] = (item.get("shortcutDetails") or {}).get("targetId")

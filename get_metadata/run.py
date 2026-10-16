@@ -15,7 +15,6 @@ def main(params: dict) -> dict:
     item = gd.get_file(params.get("file_id"), gd.DETAIL_FIELDS)
     out = gd.entry(item)
     out["path"] = gd.path_of(item)
-    out["link"] = item.get("webViewLink")
     out["created"] = item.get("createdTime")
     if item.get("description"):
         out["description"] = item["description"]

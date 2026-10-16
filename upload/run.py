@@ -36,7 +36,7 @@ def main(params: dict) -> dict:
     if len(data) > gd.MAX_TRANSFER_BYTES:
         raise gd.ToolError("Upload is over the 25 MB limit.")
 
-    fields = {"fields": f"{gd.FILE_FIELDS},webViewLink"}
+    fields = {"fields": gd.FILE_FIELDS}
     if replace_id:
         if params.get("folder_id") or params.get("convert"):
             raise gd.ToolError("folder_id and convert don't apply with replace_file_id.")
@@ -50,7 +50,7 @@ def main(params: dict) -> dict:
                 raise gd.ToolError(f"Drive can't convert {mime} files to a Google file.")
             metadata["mimeType"] = gd.GOOGLE + target
         item = gd.upload("POST", "files", metadata, data, mime, fields)
-    return {**gd.entry(item), "link": item.get("webViewLink")}
+    return gd.entry(item)
 
 
 if __name__ == "__main__":
