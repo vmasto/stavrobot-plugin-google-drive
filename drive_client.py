@@ -1,6 +1,7 @@
 """Shared Google Drive API client for the plugin's tools."""
 
 import json
+import os
 import mimetypes
 import sys
 import time
@@ -12,7 +13,8 @@ import requests
 
 PLUGIN_ROOT = Path(__file__).resolve().parent
 CONFIG_PATH = PLUGIN_ROOT / "config.json"
-OUTPUT_DIR = Path("/tmp/google-drive")
+# Stavrobot gives each run its own directory; older runners used /tmp/<plugin>.
+OUTPUT_DIR = Path(os.environ.get("STAVROBOT_TEMP_DIR", "/tmp/google-drive"))
 
 AUTHORIZE_URL = "https://accounts.google.com/o/oauth2/v2/auth"
 TOKEN_URL = "https://oauth2.googleapis.com/token"
